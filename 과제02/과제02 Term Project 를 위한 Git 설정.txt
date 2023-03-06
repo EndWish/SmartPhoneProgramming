@@ -1,0 +1,74 @@
+1)학기 프로젝트를 위한 git 설정을 한 뒤 내용을 확인할 수 있는 Repository URL 을 적어 제출하라.
+https://github.com/EndWish/SmartPhoneProgramming.git
+
+2) gitignore 에 대해 조사하라. AndroidStudio/java 을 위한 gitignore 에 적혀 있는 항목들에 대해 어떤 파일이길래 ignore 해야 하는지 함께 조사하여 본문에 적도록 한다.
+
+gitignore란 특정 파일이나 디렉토리를 git 버전 관리에서 의도렂긍로 추적하지 않도록 설정하는 파일을 말한다.
+gitignore를 설정하므로써 꼭 필요한 파일만 저장소에 저장하여 메모리공간도 아끼고 깔끔하게 파일들을 관리할 수 있다.
+대부분 없어도 실행하는데 문제가 없거나 빌드를 통해서 만들어낼 수 있는 파일들이다.
+
+### 안드로이드에서 ignore할 파일들
+*.apk: 애플리케이션 빌드 파일
+*.aar: Android 라이브러리 빌드 파일
+*.ap_: 빌드된 애플리케이션 패키지 파일
+*.aab: Android App Bundle 빌드 파일
+*.dex: ART/Dalvik VM에서 사용하는 파일
+*.class: Java 클래스 파일
+bin/, gen/, out/: 빌드된 파일 디렉토리
+release/: 릴리스 빌드 타입 파일이 없을 경우 사용
+.gradle/, build/: Gradle 파일과 빌드 디렉토리
+local.properties: 로컬 구성 파일 (SDK 경로 등)
+proguard/: Eclipse에서 생성된 Proguard 폴더
+*.log: 로그 파일
+.navigation/: Android Studio Navigation editor 임시 파일
+captures/: Android Studio 캡처 폴더
+*.iml, .idea/workspace.xml, .idea/tasks.xml, .idea/gradle.xml, .idea/assetWizardSettings.xml, .idea/dictionaries, .idea/libraries: IntelliJ와 Android Studio에서 생성된 파일들
+.idea/caches, .idea/modules.xml, .idea/navEditor.xml: Android Studio 3에서 생성된 파일들
+*.jks, *.keystore: keystore 파일
+.externalNativeBuild, .cxx/: Android Studio 2.2 이후에 생성된 외부 네이티브 빌드 폴더
+freeline.py, freeline/, freeline_project_description.json: Freeline 빌드 관련 파일
+fastlane/report.xml, fastlane/Preview.html, fastlane/screenshots, fastlane/test_output, fastlane/readme.md: fastlane 파일
+vcs.xml: 버전 관리 파일
+lint/intermediates/, lint/generated/, lint/outputs/, lint/tmp/: lint 파일 관련 디렉토리
+*.hprof: Android Profiling 파일
+
+
+### java에서 ignore해야 하는 파일
+*.class: 컴파일된 Java 클래스 파일
+*.log: 로그 파일
+*.ctxt: BlueJ 프로젝트 파일
+.mtj.tmp/: Eclipse Mobile Tools for Java (J2ME)에서 생성된 임시 파일
+*.jar, *.war, *.nar, *.ear, *.zip, *.tar.gz, *.rar: 패키지 파일
+hs_err_pid*: 자바 가상 머신 (JVM) 충돌 로그 파일
+
+
+### JetBrains IDE에서 ignore하는 파일 목록
+.idea/**/workspace.xml: 작업 공간에 대한 설정 정보
+.idea/**/tasks.xml: 작업 목록 설정
+.idea/**/usage.statistics.xml: 사용 통계 정보
+.idea/**/dictionaries: 사용자 정의 언어 사전 정보
+.idea/**/shelf: IntelliJ shelf 상태 정보
+위의 파일들은 사용자별로 다를 수 있는 파일이기 때문에 ignore 목록에 추가되었습니다.
+
+.idea/**/contentModel.xml: 내용 모델 캐시 파일
+.idea/**/dataSources/, .idea/**/dataSources.ids, .idea/**/dataSources.local.xml, .idea/**/sqlDataSources.xml, .idea/**/dynamic.xml, .idea/**/uiDesigner.xml, .idea/**/dbnavigator.xml: 데이터베이스 및 데이터 소스 관련 파일
+위의 파일들은 민감한 정보가 포함되어 있거나 자주 변경될 가능성이 높은 파일들이므로 ignore 목록에 추가되었습니다.
+
+.idea/**/gradle.xml: Gradle 설정 파일
+.idea/**/libraries: 라이브러리 파일
+Gradle을 사용하는 프로젝트의 경우 Gradle 관련 파일들이며, 자동으로 import되는 경우 라이브러리 파일들이 생성되어 ignore 목록에 추가합니다.
+
+cmake-build-*/: CMake 프로젝트 빌드 파일들
+CMake을 사용하는 프로젝트의 경우 생성되는 빌드 파일들입니다.
+
+.idea/**/mongoSettings.xml: Mongo Explorer 플러그인 설정 파일
+*.iws: IntelliJ 워크스페이스 파일
+MongoDB와 같은 데이터베이스 관련 플러그인의 설정 파일 및 IntelliJ 워크스페이스 파일입니다.
+
+out/: IntelliJ 프로젝트 빌드 결과 파일들
+.idea_modules/: mpeltonen/sbt-idea 플러그인 설정 파일
+atlassian-ide-plugin.xml: JIRA 플러그인 설정 파일
+.idea/replstate.xml: Cursive Clojure 플러그인 설정 파일
+com_crashlytics_export_strings.xml, crashlytics.properties, crashlytics-build.properties, fabric.properties: Crashlytics 플러그인 설정 파일
+
+
