@@ -1,0 +1,23 @@
+다음 YouTube 내용을 과제 본문에 요약하라
+
+Git, GitHub
+https://www.youtube.com/watch?v=YFNQwo7iTNc
+https://www.youtube.com/watch?v=lPrxhA4PLoA
+=>git은 파일들의 변화를 감시하고 기록하여 버전들을 관리할 수 있게 해주는 시스템이다.
+언제 어떻게 코드를 짰는지 그리고 커밋로그를 사용해서 왜 그렇게 작성하였는지 쉽게 확인하여 나중에 문제가 생겼을때 원인을 파악하기 좀더 수월하기 때문에 작업이 보다 안정적으로 이루어질 수 있습니다.
+브렌치를 통해 여러 개발자들이 같은 코드에 대해 동시에 작업을 할 수 있어 협업을 하는데 있어서도 유용합니다.
+github는 클라우드에 있는 깃 제공자로 나의 git저장소를 github에 저장하고 함께 공유할 수 있게 됩니다.
+
+GitHub, SourceTree
+https://www.youtube.com/watch?v=8AtHcXnJSdA
+https://www.youtube.com/watch?v=FXDjmsiv8fI
+git init으로 깃저장소를 생성합니다.
+git status로 현재 작업 중인 로컬 git 저장소의 상태를 볼 수 있습니다.
+git add를 통해 변경된 파일들을 staging해주고
+git commit을 이용해서 변화를 저장해줍니다.(스냅샷)
+git reset 을 이용하여 이전 커밋으로 돌아갈 수 있습니다. 옵션에 따라 변화된 정보를 가지고 돌아갈 수도 있고 그러지 않을 수도 있습니다.
+git revert는 이전 상태로 되돌리는 또다른 변화입니다.
+git branch를 이용하여 분기를 만들 수 있습니다.
+git checkout 으로 다른 브렌치로 이동할 수도 있습니다.
+git merge를 통해 브렌치를 병합할 수 있습니다.
+git pull과 git push를 통해 원격 저장소에 로컬 저장소의 내용을 저장하거나 로컬 저장소로 내용을 불러올 수 있습니다.
