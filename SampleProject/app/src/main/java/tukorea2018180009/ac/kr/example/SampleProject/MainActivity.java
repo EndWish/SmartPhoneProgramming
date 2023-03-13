@@ -21,27 +21,16 @@ public class MainActivity extends AppCompatActivity {
         // constraint Layout은 제안을 둔다.
         // xml은 디자인타임에 결정할때 사용 (런타일에 일어나는 동작들은 자바코드를 이용해 발생시킨다.)
 
-        Button btn = findViewById(R.id.btnPushMe);
-        btn.setOnClickListener(pushMeOnClickHandle);
 
-        btn = findViewById(R.id.btnPushMe2);
-        btn.setOnClickListener(pushMeOnClickHandle);
     }
 
-    private View.OnClickListener pushMeOnClickHandle = new View.OnClickListener() { // OnClickListener 변수이고 아래 onClick()함수를 사용할 것이다.
-        @Override
-        public void onClick(View view) {
-            TextView tv = findViewById(R.id.StudentID); //fvbi
-            tv.setText("PushMe");
-        }
-    };   // extends 는 상속을 하는 문법, implements 는 onClick()처럼 대응하는 함수들을 만들겠다는것(인터페이스?)
+    public void onBtnPushMe(View view){
+        TextView tv = findViewById(R.id.StudentID); //fvbi
+        tv.setText("PushMe");
+    }
 
-    private View.OnClickListener pushMe2OnClickHandle = new View.OnClickListener() { // OnClickListener 변수이고 아래 onClick()함수를 사용할 것이다.
-        @Override
-        public void onClick(View view) {
-            TextView tv = findViewById(R.id.StudentID); //fvbi
-            tv.setText("PushMe2");
-        }
-    };
-
+    public void onBtnAnother(View view) {
+        TextView tv = findViewById(R.id.StudentID); //fvbi
+        tv.setText("Another");
+    }
 }

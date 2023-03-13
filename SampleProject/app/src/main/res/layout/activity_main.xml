@@ -43,9 +43,10 @@
 
     <Button
         android:id="@+id/btnPushMe"
+        android:onClick="onBtnPushMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="PushMe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,9 +54,10 @@
 
     <Button
         android:id="@+id/btnPushMe2"
+        android:onClick="onBtnAnother"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button2"
+        android:text="PushMe2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
