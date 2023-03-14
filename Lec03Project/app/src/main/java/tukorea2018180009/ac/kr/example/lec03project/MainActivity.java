@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
             //Button (w=)
         //imageView (fill)
 
+    private ImageView mainImageView;
+    private TextView pageTextView;
+    private Button prevButton, nextButton;
+
     private int page = 1;
 
     @Override
@@ -28,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
         mainImageView = findViewById(R.id.mainImageView);    // find는 비용이 조금 드는 행동.
         pageTextView = findViewById(R.id.pageTextView);
+        prevButton = findViewById(R.id.prevButton);
+        nextButton = findViewById(R.id.nextButton);
+
+        SetPage(1);
     }
 
     public void onBtnPrev(View view) {
@@ -49,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
             R.mipmap.cat_6,
     };
 
-    private ImageView mainImageView;
-    private TextView pageTextView;
+
 
     private void SetPage(int page){
         if(page < 1 || page > IMG_RES_IDS.length) return;
@@ -58,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         int resId = IMG_RES_IDS[page - 1];
         mainImageView.setImageResource(resId);
         pageTextView.setText(page + " / " + IMG_RES_IDS.length );
+
+        prevButton.setEnabled(page > 1);
+        nextButton.setEnabled(page < IMG_RES_IDS.length);
 
         this.page = page;
     }
