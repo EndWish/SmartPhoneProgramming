@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mainImageView = findViewById(R.id.mainImageView);    // find는 비용이 조금 드는 행동.
+        pageTextView = findViewById(R.id.pageTextView);
     }
 
     public void onBtnPrev(View view) {
@@ -37,24 +40,26 @@ public class MainActivity extends AppCompatActivity {
         SetPage(page + 1);
     }
 
+    private static final int[] IMG_RES_IDS = new int[]{    // 클래스와 라이프 사이클을 같이 하도록하기 위해서 static으로 선언해 준다. final : const와 비슷한 역할(앞으로 변경이 없다.)
+            R.mipmap.cat_1,
+            R.mipmap.cat_2,
+            R.mipmap.cat_3,
+            R.mipmap.cat_4,
+            R.mipmap.cat_5,
+            R.mipmap.cat_6,
+    };
+
+    private ImageView mainImageView;
+    private TextView pageTextView;
+
     private void SetPage(int page){
-        if(page < 1 || page > 5) return;
+        if(page < 1 || page > IMG_RES_IDS.length) return;
 
-        int[] resIds = new int[]{
-                R.mipmap.cat_1,
-                R.mipmap.cat_2,
-                R.mipmap.cat_3,
-                R.mipmap.cat_4,
-                R.mipmap.cat_5,
-        };
+        int resId = IMG_RES_IDS[page - 1];
+        mainImageView.setImageResource(resId);
+        pageTextView.setText(page + " / " + IMG_RES_IDS.length );
 
-        int resId = resIds[page - 1];
-        ImageView iv = findViewById(R.id.mainImageView);
-        iv.setImageResource(resId);
         this.page = page;
-
-        TextView tv = findViewById(R.id.pageTextView);
-        tv.setText(page + " / " + resIds.length );
     }
 
 }
