@@ -21,6 +21,7 @@
             />
 
         <TextView
+            android:id="@+id/pageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -39,6 +40,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/mainImageView"
         android:src="@mipmap/cat_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
