@@ -175,3 +175,22 @@ r.nextFloat() => 0.0 ~ 1.0 값을 리턴한다.
 
 인터페이스를 사용해서 각기 다른 gameObject를 묶어서 관리한다.
 
+ onTouchEvent의 인자인 MotionEvent에 여러가지 action이 존재한다. getAction()을 통해 현재 액션을 알 수 있다. switch를 사용해서 처리하자.
+그리고getX()와 getY()로 디바이스상에서의 좌표를 얻어올 수 있다. GameView의 스케일에 맞추기 위해 미리 구해놨던 scale값으로 나누어 준다.
+
+안드로이드는 대체로 degree를 선호하지만 자바는 radian을 선호한다.
+double radian = Math.atan2(dy, dx); 로 각도(라디안)을 구할 수 있다.
+Math.toDegrees(radian)를 이용해서 radian을 degree로 변환 가능
+
+씬을 추가하여 게임 오브젝트에 대한 관리를 씬이 하도록 한다.
+
+리소스(비트맵)을 해당 리소스를 사용할때(객체가 생성될 때) 한번만 로드하도록 한다.
+
+메뉴바 Code - Optimize imports(ctrl + alt + O)를 눌러서 사용하지 않는 import를 삭제할 수 있다.
+
+함수이름 변경 : 함수 우클릭 - Refactor - Rename
+
+values폴더의 themes.xml에 DarkActionBar를 NoActionBar를 상속하도록 해서 위쪽에 바가 출력되지 않도록 할 수 있다.
+
+BuildConfig.DEBUG를 이용하여 디버그가 켜져있을때만 수행되도록 할 수 있다.
+
