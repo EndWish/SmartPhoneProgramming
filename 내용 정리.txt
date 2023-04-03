@@ -21,6 +21,7 @@ android:src="@mipmap/cat_1" : 이미지 설정, @로 시작하는 건 안드로�
 
 상수 생성 : 문자열 클릭 - Refactor - introduce Constant
 TAG를 클래스의 이름으로 설정 ""를 사용하지 않고 하는 방법 : public static final String TAG = MainActivity.class.getSimpleName();
+alt+Enter를 눌러서 추가할때 직접 정의할 생각이라면 미리 정의 되어 있는 것을 임포트하지 않도록 주의
 
 리소스 ID가 순차적으로 부여된다는 보장은 없기 때문에 정수 배열에 담아 사용하는 것이 좋다.
 
@@ -75,3 +76,102 @@ java뿐만 아니라 xml에 있는 문자열또한 stringTable에 추가할 수 
 문자열뿐만 아니라 이미지 등도 바꿀 수 있다.
 
 log를 제외한 모든 문자열은 stringTable을 이용한다.
+
+padding과 layout_margin은 다르다 : padding은 나의 콘텐트를 떨어 뜨려 놓고 그려라. margin은 나를 사방에 떨어 뜨려 놓아라
+background의 컬러를 설정해 보면 차이를 쉽게 알 수 있다.
+
+CheckBox도 onClick함수를 xml에서 연결할 수 있다.
+CheckBox에 isChecked()함수가 존재한다.
+
+EditText : 사용자의 text입력을 받을 수 있다.
+EditText의 getText()는 string이 아니기 때문에 .toString()까지 불려줘야 string이 반환된다.
+trim()함수는 string의 왼쪽과 오른쪽의 공백들을 전부 날려주는 함수이다.
+TextWatcher를 이용하여 EditText의 입력이 바뀐 순간에 함수가 불리도록 할 수도 있다.
+예시) nameEditText.addTextChangedListener(textWatcher);
+	TextWatcher에는 beforeTextChanged, onTextChanged, afterTextChanged 세가지 @Override할 수 있는 함수가 있다. CharSequence인자는 문자열
+
+파일 우클릭 - NEW - UIcomponent - CustumView
+
+canvas - 그림이 그려져야하는 속성을 가진다.(위치 좌표, 패딩, 회전?)
+paint - 그림때 사용될 속성을 가진다.(선인지 점선인지, 색상, 면인지 선인지, 두께)
+
+생성자가 불릴 때 화면의 크기가 결정되지는 않는다. 따라서 생성자에서 크기를 구해올 수 없다. 
+	->  onSizeChanged(int w, int h, int oldw, int oldh)를 @Override가능하다. 이 함수는 사이즈가 결정될때 혹은 바뀔때 불린다. 이때 사이즈에 관련된 것들을 초기화 하면 된다.
+
+java클래스가 View를 상속받으면 시각적으로 어떻게 나오는지 Design을 볼 수 있다.
+
+Oval, ellipse - 타원
+rect => 왼쪽위 + 오른쪽 아래, 왼쪽위 + 폭과 높이, int를 사용한다.
+rectf는 float를 사용한다. 화면상의 위치는 float를 사용하는 것이 바람직 한다. 안티에일리언싱을 통해 좌표의 소수점아래 값도 영향을 주게 됨.
+
+2차원 좌표 변환 함수 : translate, scale, rotation, skew(직사각형을 평행사변형으로 변형)
+예시) canvas.translate(100, 200);
+canvas를 변환시킨후 다시 변환이 없는 상태로 만들어야 다음에 그리는 것이 정상적으로 잘 그려진다.
+	-> canvas.save()와 canvas.restore()를 이용하여 변환상태를 저장해놓고 가장 최근에 저장한 곳으로 돌아오는 것이 가능하다.
+		canvas.save()와 canvas.restore()는 스택으로 저장이 된다.
+
+viewBinding : findViewById()를 해서 변수까지 자동으로 작성해주는 기능
+	안드로이드 스튜디오 버전마다 설정 방법이 다르다.
+	build.gradle의 android{}안에  viewBinding {enable = true} 를 추가하고 빌드한다. [activity] binding java라는 파일이 생긴다.
+	바인딩 객체를 하나 생성한다.
+
+모든 이미지들을 직접 그려줘야할 경우는 GameView를 사용하는 것이 편하다. 그렇지 않을 경우 별도의 activity를 사용하는 것이 좋다.
+activity는 기본적으로 화면이라고 보면된다. 혹은 화면 진입점.
+File - New - Activity - Empty Activity => 이걸하면 Manifest.xml이 변경된다. 
+
+Intent("의도")객체를 만들고 startActivity를 이용하여 다른 activity로 이동할 수 있다.
+예시) Intent intent = new Intent(this, AnotherActivity.class);
+        startActivity(intent);
+
+Activity가 종료될때 리턴값을 줄 수도 있다.
+Activity와 Activity사이에 데이터를 전달 할 수도 있다.
+스마트폰의 back버튼을 누르면 이전 Activity로 돌아간다. 이걸 막는 처리도 코드로 가능하다.
+
+View를 자기 자신이 직접 이미지를 가지고 그리는 방식
+BitmapFactory.decodeResource()를 사용해서 이미지를 가져온다.
+예시) 	Resources res = getResources();
+     	ballBitmap = BitmapFactory.decodeResource(res, R.mipmap.soccer_ball_240);
+
+보통의 그림들의 피봇이 좌상단이기 때문에 
+어느 밀도(hdpi or xxxhdpi)파일에 있느냐에 따라 이미지를 가져올때 크기가 달라진다. (고해상도용 폴더에 넣을 수록 더 작게 로드된다.)
+
+오버로딩된 함수 보기 : 괄호안에서 ctrl+P
+
+getResources() 함수는 view나 activity에서 사용할 수 있다.
+image의 rect를 상수로 정의하고 canvas의 scale을 조절하여 비율에 맞도록 그린다.
+scale = w / 10.0f; 로 설정하게 되면 가로길이가 상수로 10이 된다.
+
+안드로이드는 리턴을 빠른 시일 내에 해야한다. 즉, 무한루프에 빠지면 안된다. => 예약을 해야한다. 
+post는 대기열의 큐에 집어넣는것. 자바는 함수를 객체처럼 취급하기 어렵다. 함수를 담고있는 객체만 있다. 따라서 함수를 가지고 있는 객체를 만들어서 인자로 넘겨준다.
+예시) post(new Runnable() {
+            @Override
+            public void run() {
+                update();		// 계산한다.
+                invalidate();		// 그린다.
+                reserveFrame();	// 예약한다.
+            }
+        });
+post()함수는 핸들러안에 있는데 view는 핸들러안에 있는 객체를 전부 사용할 수 있다.
+invalidate()는 onDraw()함수를 불러달라고 요청하는 함수. onDraw()함수를 직접 부를 수 없기(부르면 안되기) 때문에 사용한다.
+자바객체는 스레드가 잡고 있는 동안은 계속 살아있기 때문에 계속 진행된다. 따라서 isShown()함수를 이용해서 실행이 종료되도록 한다.
+
+postDelayed는 지연시간을 가지고 불러준다. 첫번째 인자는 runnable객체 두번째 인자 딜레이 시간(ms)
+	단, 딜레이 시간이 지났다고 바로 불리는 것이 아니라 여유가 있을 때 수행된다. 즉 딜레이 시간 이전에는 절대 안불린다는 것만 보장된다.
+
+Coreographer는 싱글톤 패턴을 사용한다.
+Choreographer.getInstance().postFrameCallback()는 안드로이드의 싱크에 맞춰서 실행해 달라는 함수이다.
+
+postFrameCallback에 넣어줄 인자를 this로 바꾸고 doFrame()함수를 자기 자신에게 override해준다.
+
+ArrayList<>를 사용해서 배열을 만든다. vs vector<> (ArrayList는 thread safe하지 않지만 대신 빠르다.)
+private ArrayList<Ball> balls = new ArrayList<>();
+for (Ball ball : balls) {
+      ball.update();
+}
+
+랜덤값 뽑아내기
+Random r = new Random();
+r.nextFloat() => 0.0 ~ 1.0 값을 리턴한다.
+
+인터페이스를 사용해서 각기 다른 gameObject를 묶어서 관리한다.
+
